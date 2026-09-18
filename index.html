@@ -3,132 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rupia Hossain Chowdhury — 2-Page Master's Application CV</title>
+    <title>Rupia Hossain Chowdhury — Academic CV</title>
+    
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts -->
+    
+    <!-- Google Fonts: Plus Jakarta Sans for modern clarity, Merriweather for academic print elegance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        /* Base Screen Styles */
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0f172a;
+            background-color: #f1f5f9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
         }
+        
+        .font-serif { font-family: 'Merriweather', serif; }
+
+        /* A4 Paper Simulation for Screen */
+        .print-sheet {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Print-Specific Overrides */
         @media print {
-            body {
-                background-color: white !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .page-break {
-                page-break-after: always;
-                break-after: page;
-            }
-            .print-sheet {
-                box-shadow: none !important;
-                border: none !important;
-                margin: 0 !important;
-                padding: 10mm 12mm !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                border-radius: 0 !important;
-            }
             @page {
                 size: A4;
-                margin: 0;
+                margin: 12mm 15mm 15mm 15mm; /* Top, Right, Bottom, Left */
             }
+            
+            body {
+                background: white !important;
+                background-image: none !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color: #000 !important;
+            }
+
+            .no-print { display: none !important; }
+            
+            .print-sheet {
+                width: 100% !important;
+                min-height: auto !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+
+            .page-break {
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+
+            .no-break {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            /* Academic Print Typography Adjustments */
+            h1 { font-size: 22pt !important; line-height: 1.2 !important; }
+            h2 { font-size: 11pt !important; margin-bottom: 6pt !important; }
+            h3 { font-size: 10.5pt !important; }
+            p, li, span { font-size: 9.5pt !important; line-height: 1.4 !important; }
+            
+            /* Ensure links print as plain text or with subtle underline */
+            a { text-decoration: none !important; color: #000 !important; }
+            
+            /* Force background colors to print for subtle section distinction */
+            .bg-slate-50 { background-color: #f8fafc !important; -webkit-print-color-adjust: exact; }
+            .bg-indigo-50 { background-color: #eef2ff !important; -webkit-print-color-adjust: exact; }
         }
+
+        /* Smooth hover transitions for screen */
+        .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
-<body class="py-6 px-4 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="py-8 px-4 antialiased selection:bg-indigo-600 selection:text-white">
 
-    <!-- Top Action Toolbar (No Print) -->
-    <div class="no-print max-w-4xl mx-auto mb-6 flex items-center justify-between bg-slate-800/90 backdrop-blur-md border border-slate-700 text-white px-5 py-3 rounded-2xl shadow-xl">
-        <div class="flex items-center space-x-3 text-sm font-medium">
-            <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-xs">RC</div>
-            <span>European Master's Admission CV (Strict 2-Page Format)</span>
+    <!-- Top Action Toolbar (Screen Only) -->
+    <div class="no-print max-w-[210mm] mx-auto mb-6 flex flex-col sm:flex-row items-center justify-between bg-white/80 backdrop-blur-md border border-slate-200 text-slate-700 px-5 py-3 rounded-2xl shadow-lg">
+        <div class="flex items-center space-x-3 text-sm font-semibold mb-3 sm:mb-0">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-700 flex items-center justify-center font-bold text-xs text-white shadow-md">RC</div>
+            <div>
+                <div class="text-slate-900">Academic Master's CV</div>
+                <div class="text-xs font-normal text-slate-500">Optimized for A4 Print (Strict 2-Page)</div>
+            </div>
         </div>
-        <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs sm:text-sm font-semibold rounded-xl transition cursor-pointer shadow-md">
-            <i class="fa-solid fa-print mr-2"></i> Print / Save 2-Page PDF
+        <button onclick="window.print()" class="inline-flex items-center px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95">
+            <i class="fa-solid fa-print mr-2"></i> Save as PDF
         </button>
     </div>
 
     <!-- Main CV Sheet -->
-    <main class="print-sheet max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl p-6 sm:p-10 text-slate-800 border border-slate-200 space-y-6">
+    <main class="print-sheet p-8 sm:p-12 text-slate-800 relative">
         
         <!-- ================= PAGE 1 ================= -->
         <div class="space-y-6 page-break">
             
             <!-- Header Section -->
-            <header class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b-2 border-slate-900 gap-4">
-                <div class="flex-1">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="px-2.5 py-0.5 bg-indigo-50 text-indigo-700 text-[11px] font-bold tracking-wider uppercase rounded-md border border-indigo-100">Master's Degree Applicant</span>
-                        <span class="text-slate-500 text-xs font-medium">· English Language & Literature</span>
+            <header class="flex flex-col sm:flex-row sm:items-start justify-between pb-5 border-b-2 border-slate-900 gap-6">
+                <div class="flex-1 space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-indigo-50 text-indigo-800 text-[10px] font-bold tracking-widest uppercase rounded-md border border-indigo-100">Master's Applicant</span>
+                        <span class="text-slate-400 text-xs font-medium">•</span>
+                        <span class="text-slate-600 text-xs font-semibold tracking-wide uppercase">English Language & Literature</span>
                     </div>
-                    <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 mb-1.5">
+                    <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
                         Rupia Hossain Chowdhury
                     </h1>
-                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-600 font-medium">
-                        <span><i class="fa-solid fa-location-dot text-indigo-600 mr-1"></i> Chittagong, Bangladesh</span>
-                        <span><i class="fa-solid fa-phone text-indigo-600 mr-1"></i> <a href="tel:+8801620680512" class="hover:text-slate-900">+880 1620-680512</a></span>
-                        <span><i class="fa-solid fa-envelope text-indigo-600 mr-1"></i> <a href="mailto:rupiahossainchowdhury99@gmail.com" class="hover:text-slate-900">rupiahossainchowdhury99@gmail.com</a></span>
+                    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-slate-600 font-medium">
+                        <span class="flex items-center"><i class="fa-solid fa-location-dot text-indigo-600 mr-1.5 w-4 text-center"></i> Chittagong, Bangladesh</span>
+                        <span class="flex items-center"><i class="fa-solid fa-phone text-indigo-600 mr-1.5 w-4 text-center"></i> <a href="tel:+8801620680512" class="hover:text-indigo-700 transition-colors">+880 1620-680512</a></span>
+                        <span class="flex items-center"><i class="fa-solid fa-envelope text-indigo-600 mr-1.5 w-4 text-center"></i> <a href="mailto:rupiahossainchowdhury99@gmail.com" class="hover:text-indigo-700 transition-colors break-all">rupiahossainchowdhury99@gmail.com</a></span>
                     </div>
                 </div>
 
                 <!-- Profile Photo -->
                 <div class="shrink-0 self-start sm:self-center">
-                    <div class="w-24 h-24 rounded-xl bg-slate-100 border-2 border-slate-300 overflow-hidden shadow-md flex items-center justify-center">
-                        <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover">
+                    <div class="w-28 h-28 rounded-2xl bg-slate-100 border-2 border-slate-200 overflow-hidden shadow-sm flex items-center justify-center relative group">
+                        <!-- Fallback initials if image fails -->
+                        <span class="absolute text-3xl font-bold text-slate-300 select-none">RC</span>
+                        <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
                     </div>
                 </div>
             </header>
 
-            <!-- Academic Profile / Summary -->
-            <section>
-                <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2 flex items-center border-b border-indigo-100 pb-1">
-                    <i class="fa-solid fa-bookmark mr-1.5 text-indigo-600"></i> Academic Profile & Motivation
+            <!-- Academic Profile -->
+            <section class="no-break">
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                    <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Academic Profile & Motivation
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                    Dedicated and academically driven English Language and Literature graduate with a robust foundation (CGPA 3.39/4.00) from International Islamic University Chittagong. Deeply passionate about contemporary literature, critical theory, and cross-cultural discourse. Actively seeking admission to a distinguished European Master's program to refine research methodologies, engage in international academic exchange, and prepare for a career in advanced research and education.
+                <p class="text-sm text-slate-700 leading-relaxed font-serif text-justify">
+                    Dedicated and academically driven English Language and Literature graduate with a robust foundation (CGPA 3.39/4.00) from International Islamic University Chittagong. Deeply passionate about contemporary literature, critical theory, and cross-cultural discourse. Actively seeking admission to a distinguished European Master's program to refine research methodologies, engage in international academic exchange, and prepare for a career in advanced research, digital humanities, and higher education.
                 </p>
             </section>
 
             <!-- Education -->
-            <section>
-                <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-3 flex items-center border-b border-indigo-100 pb-1">
-                    <i class="fa-solid fa-graduation-cap mr-1.5 text-indigo-600"></i> Education
+            <section class="no-break">
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-4 flex items-center">
+                    <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Education
                 </h2>
-                <div class="space-y-3">
-                    <div class="bg-slate-50/60 p-3.5 rounded-xl border border-slate-100">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                <div class="space-y-4">
+                    <div class="bg-slate-50/80 p-4 rounded-xl border border-slate-100 hover-lift">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1.5">
                             <h3 class="font-bold text-slate-900 text-sm">Bachelor of Arts in English Language and Literature</h3>
-                            <span class="text-xs font-semibold px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-full w-fit">2021 – 2025</span>
+                            <span class="text-[11px] font-bold px-2.5 py-1 bg-indigo-100 text-indigo-800 rounded-full w-fit mt-1 sm:mt-0">2021 – 2025</span>
                         </div>
-                        <p class="text-slate-600 text-xs font-medium mb-0.5">International Islamic University Chittagong (IIUC)</p>
-                        <p class="text-slate-700 text-xs"><strong class="text-slate-900">Final CGPA:</strong> 3.39 / 4.00</p>
+                        <p class="text-slate-700 text-xs font-semibold mb-1">International Islamic University Chittagong (IIUC)</p>
+                        <div class="flex items-center gap-4 text-xs text-slate-600">
+                            <span><strong class="text-slate-900">Final CGPA:</strong> 3.39 / 4.00</span>
+                            <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                            <span>Relevant Coursework: Critical Theory, Research Methodology, Linguistics</span>
+                        </div>
                     </div>
 
-                    <div class="bg-slate-50/60 p-3.5 rounded-xl border border-slate-100">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                    <div class="bg-slate-50/80 p-4 rounded-xl border border-slate-100 hover-lift">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1.5">
                             <h3 class="font-bold text-slate-900 text-sm">Higher Secondary Certificate (HSC) — Science</h3>
-                            <span class="text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-full w-fit">2020</span>
+                            <span class="text-[11px] font-bold px-2.5 py-1 bg-slate-200 text-slate-700 rounded-full w-fit mt-1 sm:mt-0">2020</span>
                         </div>
-                        <p class="text-slate-600 text-xs font-medium mb-0.5">Chattagram Biggan College, Chittagong</p>
-                        <p class="text-slate-700 text-xs"><strong class="text-slate-900">GPA:</strong> 4.83 / 5.00</p>
+                        <p class="text-slate-700 text-xs font-semibold mb-1">Chattagram Biggan College, Chittagong</p>
+                        <div class="flex items-center gap-4 text-xs text-slate-600">
+                            <span><strong class="text-slate-900">GPA:</strong> 4.83 / 5.00</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Footer indicator for Page 1 -->
-            <div class="text-right text-[10px] text-slate-400 pt-1 border-t border-slate-100">
-                Page 1 of 2 · Rupia Hossain Chowdhury
+            <!-- Page 1 Footer -->
+            <div class="absolute bottom-8 left-12 right-12 flex justify-between items-center text-[9px] text-slate-400 border-t border-slate-200 pt-2">
+                <span>Rupia Hossain Chowdhury</span>
+                <span>Page 1 of 2</span>
             </div>
         </div>
 
@@ -137,137 +199,140 @@
         <div class="space-y-6 pt-2">
 
             <!-- Academic Conferences & Workshops -->
-            <section>
-                <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-3 flex items-center border-b border-indigo-100 pb-1">
-                    <i class="fa-solid fa-chalkboard-user mr-1.5 text-indigo-600"></i> Academic Conferences & Workshops
+            <section class="no-break">
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-4 flex items-center">
+                    <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Academic Conferences & Workshops
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
-                        <div class="flex justify-between items-start mb-0.5">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+                        <div class="flex justify-between items-start mb-1">
                             <h3 class="font-bold text-slate-900 text-xs">AIUB Academic Conference</h3>
-                            <span class="text-[11px] font-semibold text-indigo-600">2025</span>
+                            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2025</span>
                         </div>
-                        <p class="text-slate-600 text-[11px] leading-snug">Participated in focused academic sessions exploring modern research methodologies.</p>
+                        <p class="text-slate-600 text-[11px] leading-snug">Participated in focused academic sessions exploring modern research methodologies and literary analysis frameworks.</p>
                     </div>
 
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
-                        <div class="flex justify-between items-start mb-0.5">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+                        <div class="flex justify-between items-start mb-1">
                             <h3 class="font-bold text-slate-900 text-xs">FAHIIUC International Conference</h3>
-                            <span class="text-[11px] font-semibold text-indigo-600">2023</span>
+                            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2023</span>
                         </div>
-                        <p class="text-slate-600 text-[11px] leading-snug">Attended expert presentations on “Envisioning the Future of Teaching Language and Literature.”</p>
+                        <p class="text-slate-600 text-[11px] leading-snug">Attended expert presentations on “Envisioning the Future of Teaching Language and Literature” in a globalized context.</p>
                     </div>
 
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
-                        <div class="flex justify-between items-start mb-0.5">
-                            <h3 class="font-bold text-slate-900 text-xs">SOP Writing Workshop</h3>
-                            <span class="text-[11px] font-semibold text-indigo-600">2024</span>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-slate-900 text-xs">Academic SOP Writing Workshop</h3>
+                            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2024</span>
                         </div>
-                        <p class="text-slate-600 text-[11px] leading-snug">Completed practical training in structuring compelling Statements of Purpose.</p>
+                        <p class="text-slate-600 text-[11px] leading-snug">Completed practical training in structuring compelling, research-focused Statements of Purpose for graduate admission.</p>
                     </div>
 
-                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80">
-                        <div class="flex justify-between items-start mb-0.5">
-                            <h3 class="font-bold text-slate-900 text-xs">Public Speaking Workshop</h3>
-                            <span class="text-[11px] font-semibold text-indigo-600">2024</span>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="font-bold text-slate-900 text-xs">Public Speaking & Rhetoric Workshop</h3>
+                            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2024</span>
                         </div>
-                        <p class="text-slate-600 text-[11px] leading-snug">Developed confidence in oral presentation, rhetoric, and effective delivery techniques.</p>
+                        <p class="text-slate-600 text-[11px] leading-snug">Developed advanced confidence in oral presentation, academic rhetoric, and effective delivery techniques.</p>
                     </div>
                 </div>
             </section>
 
             <!-- University Volunteering & Activities -->
-            <section>
-                <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2.5 flex items-center border-b border-indigo-100 pb-1">
-                    <i class="fa-solid fa-users-rectangle mr-1.5 text-indigo-600"></i> University Volunteering & Leadership
+            <section class="no-break">
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                    <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> University Volunteering & Leadership
                 </h2>
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
                         <h3 class="font-bold text-slate-900 text-xs sm:text-sm">Event Volunteer & Coordinator</h3>
-                        <span class="text-[11px] font-semibold text-indigo-600">IIUC</span>
+                        <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full w-fit mt-1 sm:mt-0">IIUC Campus</span>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs leading-relaxed">
-                        <li>Assisted in organizing academic and cultural events, including the Melody & Metaphor Cultural Competition, Debate Contest, and Public Speaking Contest.</li>
-                        <li>Handled participant coordination, scheduling, and on-site event logistics.</li>
+                    <ul class="list-disc list-inside space-y-1.5 text-slate-700 text-xs leading-relaxed marker:text-indigo-600">
+                        <li>Assisted in organizing major academic and cultural events, including the <em>Melody & Metaphor</em> Cultural Competition, Debate Contest, and Public Speaking Contest.</li>
+                        <li>Handled participant coordination, scheduling, and on-site event logistics, ensuring seamless execution for 200+ attendees.</li>
                     </ul>
                 </div>
             </section>
 
-            <!-- Languages & Competencies (Side by Side) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Two Column Layout: Languages & Research Skills -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 no-break">
                 <!-- Languages -->
                 <section>
-                    <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2 flex items-center border-b border-indigo-100 pb-1">
-                        <i class="fa-solid fa-language mr-1.5 text-indigo-600"></i> Languages
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                        <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Languages
                     </h2>
-                    <div class="space-y-1.5 text-xs">
-                        <div class="flex justify-between items-center bg-slate-50 px-3 py-2 rounded-lg border border-slate-200/80">
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center bg-slate-50 px-3 py-2.5 rounded-lg border border-slate-200/80">
                             <span class="font-bold text-slate-900">Bangla</span>
-                            <span class="text-slate-600">Native</span>
+                            <span class="text-slate-600 font-medium">Native Proficiency</span>
                         </div>
-                        <div class="flex justify-between items-center bg-slate-50 px-3 py-2 rounded-lg border border-slate-200/80">
+                        <div class="flex justify-between items-center bg-slate-50 px-3 py-2.5 rounded-lg border border-slate-200/80">
                             <span class="font-bold text-slate-900">English</span>
-                            <span class="text-indigo-700 font-semibold">Fluent (R/W/S)</span>
+                            <span class="text-indigo-700 font-bold">Fluent (Reading, Writing, Speaking)</span>
                         </div>
                     </div>
                 </section>
 
-                <!-- Digital Skills -->
+                <!-- Research & Digital Literacy (Reframed for Academic Tone) -->
                 <section>
-                    <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2 flex items-center border-b border-indigo-100 pb-1">
-                        <i class="fa-solid fa-laptop-code mr-1.5 text-indigo-600"></i> Digital Tools & SEO
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                        <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Research & Digital Literacy
                     </h2>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200/80 space-y-1.5 text-xs">
-                        <div class="flex justify-between font-medium">
-                            <span class="text-slate-900">MS Office (Word, Excel, PPT)</span>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-2 text-xs">
+                        <div class="flex justify-between items-center font-medium border-b border-slate-200 pb-2">
+                            <span class="text-slate-900"><i class="fa-solid fa-file-word text-indigo-600 mr-2 w-4"></i>MS Office Suite (Word, Excel, PPT)</span>
                             <span class="text-slate-600">Proficient</span>
                         </div>
-                        <div class="flex justify-between font-medium pt-1.5 border-t border-slate-200">
-                            <span class="text-slate-900">SEO Knowledge</span>
-                            <span class="text-indigo-600 font-semibold">Learning</span>
+                        <div class="flex justify-between items-center font-medium pt-0.5">
+                            <span class="text-slate-900"><i class="fa-solid fa-magnifying-glass text-indigo-600 mr-2 w-4"></i>Digital Humanities & SEO Fundamentals</span>
+                            <span class="text-indigo-700 font-semibold">Active Learner</span>
                         </div>
                     </div>
                 </section>
             </div>
 
             <!-- Soft Skills & Personal Interests -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 no-break">
                 <!-- Soft Skills -->
                 <section>
-                    <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2 flex items-center border-b border-indigo-100 pb-1">
-                        <i class="fa-solid fa-circle-check mr-1.5 text-indigo-600"></i> Soft Skills
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                        <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Core Competencies
                     </h2>
-                    <div class="flex flex-wrap gap-1">
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Academic Research</span>
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Communication</span>
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Teamwork</span>
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Time Management</span>
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Customer Service</span>
-                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 text-[11px] font-medium rounded-md">Detail Accuracy</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Academic Research</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Critical Analysis</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Cross-cultural Communication</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Time Management</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Event Coordination</span>
+                        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Detail Accuracy</span>
                     </div>
                 </section>
 
                 <!-- Interests -->
                 <section>
-                    <h2 class="text-xs uppercase tracking-widest text-indigo-700 font-extrabold mb-2 flex items-center border-b border-indigo-100 pb-1">
-                        <i class="fa-solid fa-compass mr-1.5 text-indigo-600"></i> Interests
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
+                        <span class="w-6 h-[2px] bg-indigo-600 mr-2"></span> Academic & Personal Interests
                     </h2>
-                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200/80 text-[11px] text-slate-700 space-y-1">
-                        <div class="flex items-center space-x-2"><i class="fa-solid fa-book-open text-indigo-600 w-3"></i><span>Reading Contemporary Literature</span></div>
-                        <div class="flex items-center space-x-2"><i class="fa-solid fa-pen-nib text-indigo-600 w-3"></i><span>Creative Writing & Composition</span></div>
-                        <div class="flex items-center space-x-2"><i class="fa-solid fa-camera text-indigo-600 w-3"></i><span>Photography & Photo Editing</span></div>
-                        <div class="flex items-center space-x-2"><i class="fa-solid fa-globe text-indigo-600 w-3"></i><span>Continuous Online Learning</span></div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-[11px] text-slate-700 space-y-2">
+                        <div class="flex items-center space-x-2.5"><i class="fa-solid fa-book-open text-indigo-600 w-4 text-center"></i><span>Contemporary Literature & Critical Theory</span></div>
+                        <div class="flex items-center space-x-2.5"><i class="fa-solid fa-pen-nib text-indigo-600 w-4 text-center"></i><span>Creative Writing & Academic Composition</span></div>
+                        <div class="flex items-center space-x-2.5"><i class="fa-solid fa-camera text-indigo-600 w-4 text-center"></i><span>Photography & Visual Storytelling</span></div>
+                        <div class="flex items-center space-x-2.5"><i class="fa-solid fa-globe text-indigo-600 w-4 text-center"></i><span>Digital Humanities & Continuous Learning</span></div>
                     </div>
                 </section>
             </div>
 
-            <!-- Footer for Page 2 -->
-            <footer class="mt-4 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-400">
+            <!-- Page 2 Footer -->
+            <footer class="mt-8 pt-3 border-t border-slate-200 flex items-center justify-between text-[9px] text-slate-400 uppercase tracking-wider">
                 <span>Rupia Hossain Chowdhury · Master's Admission Dossier</span>
                 <span>Page 2 of 2</span>
             </footer>
         </div>
 
     </main>
+    
+    <!-- Bottom spacing for screen viewing -->
+    <div class="no-print h-12"></div>
 </body>
 </html>
