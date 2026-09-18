@@ -45,6 +45,141 @@
             box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.04);
             border-radius: 6px;
             padding: 15mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* === DESIGN ENHANCEMENTS === */
+        
+        /* Signature gradient stripe at top of sheet */
+        .cv-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5 0%, #6366f1 30%, #8b5cf6 60%, #3b82f6 100%);
+        }
+
+        /* Gradient header divider */
+        .header-divider {
+            background: linear-gradient(90deg, #1e293b 0%, #4f46e5 50%, #3b82f6 100%);
+            height: 2px;
+        }
+
+        /* Gradient section header lines */
+        .section-line {
+            background: linear-gradient(90deg, #4f46e5 0%, #6366f1 60%, #a5b4fc 100%);
+            height: 2px;
+        }
+
+        /* Gradient badge */
+        .gradient-badge {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #ede9fe 100%);
+            border: 1px solid #c7d2fe;
+            color: #4338ca;
+            position: relative;
+            overflow: hidden;
+        }
+        .gradient-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Gradient photo border */
+        .photo-frame {
+            position: relative;
+            padding: 2.5px;
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6, #3b82f6);
+            border-radius: 12px;
+        }
+        .photo-frame-inner {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5px;
+        }
+
+        /* UNIVERSAL CARD STYLE — applied to EVERY section for visual consistency */
+        .accent-card {
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+        }
+        .accent-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: linear-gradient(180deg, #4f46e5, #3b82f6);
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* Gradient date badges */
+        .date-badge {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            color: #3730a3;
+            border: 1px solid #a5b4fc;
+        }
+        .date-badge-small {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        /* Skill tags with subtle gradient */
+        .skill-tag {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s ease;
+        }
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border-color: #a5b4fc;
+            transform: translateY(-1px);
+        }
+
+        /* Language item with subtle accent */
+        .lang-item {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        .lang-item:hover {
+            border-color: #a5b4fc;
+        }
+
+        /* Interest items */
+        .interest-item {
+            position: relative;
+            padding-left: 10px;
+        }
+        .interest-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+        }
+
+        /* Footer gradient line */
+        .footer-line {
+            background: linear-gradient(90deg, transparent 0%, #cbd5e1 20%, #6366f1 50%, #cbd5e1 80%, transparent 100%);
+            height: 1px;
         }
 
         /* Print Styles */
@@ -72,6 +207,11 @@
                 border-radius: 0 !important;
             }
 
+            /* Disable animations in print */
+            .gradient-badge::after { display: none !important; }
+            .skill-tag:hover { transform: none !important; }
+            .lang-item:hover { border-color: #e2e8f0 !important; }
+
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -79,7 +219,7 @@
         }
 
         .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hover-lift:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.08); }
+        .hover-lift:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -5px rgba(79, 70, 229, 0.15); }
     </style>
 </head>
 <body class="py-6 px-4 antialiased selection:bg-indigo-600 selection:text-white">
@@ -105,7 +245,7 @@
                     <i class="fa-solid fa-moon text-xs"></i>
                 </button>
             </div>
-            <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-slate-900 dark:bg-indigo-600 hover:bg-slate-800 dark:hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95">
+            <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95">
                 <i class="fa-solid fa-print mr-2"></i> Save PDF
             </button>
         </div>
@@ -115,10 +255,10 @@
     <main class="cv-sheet">
         
         <!-- HEADER -->
-        <header class="flex items-start justify-between pb-4 border-b-2 border-slate-900 mb-4">
+        <header class="flex items-start justify-between pb-4 mb-4">
             <div class="flex-1">
                 <div class="flex items-center gap-2 mb-2">
-                    <span class="px-2 py-0.5 bg-indigo-50 text-indigo-800 text-[9px] font-bold tracking-wider uppercase rounded border border-indigo-100">Master's Applicant</span>
+                    <span class="gradient-badge px-2.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded">Master's Applicant</span>
                     <span class="text-slate-500 text-[10px]">•</span>
                     <span class="text-slate-600 text-[10px] font-semibold tracking-wide uppercase">English Language & Literature</span>
                 </div>
@@ -132,18 +272,26 @@
                 </div>
             </div>
 
+            <!-- ENLARGED PHOTO with gradient frame -->
             <div class="shrink-0 ml-4">
-                <div class="w-16 h-16 rounded-lg bg-slate-100 border-2 border-slate-200 overflow-hidden shadow-sm flex items-center justify-center relative">
-                    <span class="absolute text-lg font-bold text-slate-300 select-none">RC</span>
-                    <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+                <div class="photo-frame">
+                    <div class="photo-frame-inner">
+                        <div class="w-24 h-24 rounded-lg bg-slate-100 overflow-hidden shadow-sm flex items-center justify-center relative">
+                            <span class="absolute text-2xl font-bold text-slate-300 select-none">RC</span>
+                            <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
+        
+        <!-- Gradient header divider -->
+        <div class="header-divider mb-4"></div>
 
-        <!-- ACADEMIC PROFILE (Full width - single column, slightly larger font, thicker line) -->
+        <!-- ACADEMIC PROFILE -->
         <section class="mb-4">
             <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
-                <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Academic Profile
+                <span class="section-line w-4 mr-1.5 rounded-full"></span> Academic Profile
             </h2>
             <p class="text-[11.5px] text-slate-700 leading-[1.5] font-serif text-justify">
                 Dedicated English Language and Literature graduate (CGPA 3.39/4.00) from International Islamic University Chittagong. Passionate about contemporary literature, critical theory, and cross-cultural discourse. Seeking admission to a distinguished European Master's program to refine research methodologies and prepare for a career in advanced research and higher education.
@@ -156,13 +304,13 @@
             <!-- Education -->
             <section>
                 <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
-                    <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Education
+                    <span class="section-line w-4 mr-1.5 rounded-full"></span> Education
                 </h2>
                 <div class="space-y-2">
-                    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100 hover-lift">
+                    <div class="accent-card p-2.5 rounded-lg hover-lift pl-4">
                         <div class="flex items-center justify-between mb-0.5">
                             <h3 class="font-bold text-slate-900 text-[11px]">BA in English Language and Literature</h3>
-                            <span class="text-[9px] font-bold px-1.5 py-0.5 bg-indigo-100 text-indigo-800 rounded">2021 – 2025</span>
+                            <span class="date-badge text-[9px] font-bold px-1.5 py-0.5 rounded">2021 – 2025</span>
                         </div>
                         <p class="text-slate-700 text-[10px] font-semibold mb-0.5">International Islamic University Chittagong (IIUC)</p>
                         <div class="flex items-center gap-2 text-[9.5px] text-slate-600">
@@ -172,10 +320,10 @@
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100 hover-lift">
+                    <div class="accent-card p-2.5 rounded-lg hover-lift pl-4">
                         <div class="flex items-center justify-between mb-0.5">
                             <h3 class="font-bold text-slate-900 text-[11px]">HSC — Science</h3>
-                            <span class="text-[9px] font-bold px-1.5 py-0.5 bg-slate-200 text-slate-700 rounded">2020</span>
+                            <span class="date-badge text-[9px] font-bold px-1.5 py-0.5 rounded">2020</span>
                         </div>
                         <p class="text-slate-700 text-[10px] font-semibold mb-0.5">Chattagram Biggan College, Chittagong</p>
                         <div class="text-[9.5px] text-slate-600">
@@ -188,38 +336,40 @@
             <!-- TWO COLUMN: Conferences & Leadership -->
             <div class="grid grid-cols-2 gap-4">
                 
-                <!-- Conferences & Workshops -->
+                <!-- Conferences & Workshops (NOW IN ACCENT CARD) -->
                 <section>
                     <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
-                        <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Conferences & Workshops
+                        <span class="section-line w-4 mr-1.5 rounded-full"></span> Conferences & Workshops
                     </h2>
-                    <div class="space-y-1.5">
-                        <div class="flex items-start gap-2 text-[10px]">
-                            <span class="text-[8px] font-bold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded shrink-0 mt-0.5">2025</span>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-slate-900 leading-tight">AIUB Academic Conference</h3>
-                                <p class="text-slate-600 text-[9px] leading-tight">Modern research methodologies & literary analysis frameworks.</p>
+                    <div class="accent-card p-2.5 rounded-lg pl-4">
+                        <div class="space-y-1.5">
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] font-bold px-1 py-0.5 rounded shrink-0 mt-0.5">2025</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">AIUB Academic Conference</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Modern research methodologies & literary analysis frameworks.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex items-start gap-2 text-[10px]">
-                            <span class="text-[8px] font-bold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-slate-900 leading-tight">Academic SOP Writing Workshop</h3>
-                                <p class="text-slate-600 text-[9px] leading-tight">Structuring research-focused Statements of Purpose.</p>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] font-bold px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">Academic SOP Writing Workshop</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Structuring research-focused Statements of Purpose.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex items-start gap-2 text-[10px]">
-                            <span class="text-[8px] font-bold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-slate-900 leading-tight">Public Speaking & Rhetoric Workshop</h3>
-                                <p class="text-slate-600 text-[9px] leading-tight">Oral presentation & academic delivery techniques.</p>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] font-bold px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">Public Speaking & Rhetoric Workshop</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Oral presentation & academic delivery techniques.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex items-start gap-2 text-[10px]">
-                            <span class="text-[8px] font-bold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded shrink-0 mt-0.5">2023</span>
-                            <div class="flex-1">
-                                <h3 class="font-bold text-slate-900 leading-tight">FAHIIUC International Conference</h3>
-                                <p class="text-slate-600 text-[9px] leading-tight">"Future of Teaching Language and Literature."</p>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] font-bold px-1 py-0.5 rounded shrink-0 mt-0.5">2023</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">FAHIIUC International Conference</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">"Future of Teaching Language and Literature."</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,12 +378,12 @@
                 <!-- Leadership & Volunteering -->
                 <section>
                     <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
-                        <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Leadership & Volunteering
+                        <span class="section-line w-4 mr-1.5 rounded-full"></span> Leadership & Volunteering
                     </h2>
-                    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-100 h-full">
+                    <div class="accent-card p-2.5 rounded-lg pl-4 h-full">
                         <div class="flex items-center justify-between mb-1">
                             <h3 class="font-bold text-slate-900 text-[10.5px]">Event Volunteer & Coordinator</h3>
-                            <span class="text-[8px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">IIUC</span>
+                            <span class="date-badge-small text-[8px] font-bold px-1.5 py-0.5 rounded">IIUC</span>
                         </div>
                         <ul class="list-disc list-inside space-y-0.5 text-slate-700 text-[9.5px] leading-snug marker:text-indigo-600">
                             <li>Organized <em>Melody & Metaphor</em> Competition, Debate, and Public Speaking Contests.</li>
@@ -245,14 +395,14 @@
         </div>
 
         <!-- BOTTOM ROW 1: Digital Literacy + Core Skills -->
-        <div class="grid grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-100">
+        <div class="grid grid-cols-2 gap-4 mt-4 pt-4" style="border-top: 1px solid transparent; border-image: linear-gradient(90deg, transparent, #cbd5e1 20%, #6366f1 50%, #cbd5e1 80%, transparent) 1;">
             
-            <!-- Digital Literacy -->
+            <!-- Digital Literacy (NOW IN ACCENT CARD) -->
             <section>
                 <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
-                    <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Digital Literacy
+                    <span class="section-line w-4 mr-1.5 rounded-full"></span> Digital Literacy
                 </h2>
-                <div class="bg-slate-50 p-2 rounded-lg border border-slate-100 space-y-1 text-[9.5px]">
+                <div class="accent-card p-2 rounded-lg pl-4 space-y-1 text-[9.5px]">
                     <div class="flex justify-between items-center">
                         <span class="text-slate-900"><i class="fa-solid fa-file-word text-indigo-600 mr-1 text-[8px]"></i>MS Office</span>
                         <span class="text-slate-600">Proficient</span>
@@ -267,14 +417,16 @@
             <!-- Core Skills -->
             <section>
                 <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
-                    <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Core Skills
+                    <span class="section-line w-4 mr-1.5 rounded-full"></span> Core Skills
                 </h2>
-                <div class="flex flex-wrap gap-1">
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[8.5px] font-semibold rounded border border-slate-200">Academic Research</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[8.5px] font-semibold rounded border border-slate-200">Critical Analysis</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[8.5px] font-semibold rounded border border-slate-200">Cross-cultural Comm.</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[8.5px] font-semibold rounded border border-slate-200">Event Coordination</span>
-                    <span class="px-2 py-0.5 bg-slate-100 text-slate-700 text-[8.5px] font-semibold rounded border border-slate-200">Detail Accuracy</span>
+                <div class="accent-card p-2 rounded-lg pl-4">
+                    <div class="flex flex-wrap gap-1">
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Academic Research</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Critical Analysis</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Cross-cultural Comm.</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Event Coordination</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Detail Accuracy</span>
+                    </div>
                 </div>
             </section>
         </div>
@@ -282,41 +434,42 @@
         <!-- BOTTOM ROW 2: Languages + Interests -->
         <div class="grid grid-cols-2 gap-4 mt-3">
             
-            <!-- Languages -->
+            <!-- Languages (NOW IN ACCENT CARD) -->
             <section>
                 <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
-                    <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Languages
+                    <span class="section-line w-4 mr-1.5 rounded-full"></span> Languages
                 </h2>
-                <div class="space-y-1 text-[9.5px]">
-                    <div class="flex justify-between items-center bg-slate-50 px-2 py-1.5 rounded border border-slate-100">
+                <div class="accent-card p-2 rounded-lg pl-4 space-y-1 text-[9.5px]">
+                    <div class="flex justify-between items-center lang-item px-2 py-1.5 rounded">
                         <span class="font-bold text-slate-900">Bangla</span>
                         <span class="text-slate-600">Native</span>
                     </div>
-                    <div class="flex justify-between items-center bg-slate-50 px-2 py-1.5 rounded border border-slate-100">
+                    <div class="flex justify-between items-center lang-item px-2 py-1.5 rounded">
                         <span class="font-bold text-slate-900">English</span>
                         <span class="text-indigo-700 font-semibold">Fluent</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Interests -->
+            <!-- Interests (NOW IN ACCENT CARD) -->
             <section>
                 <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
-                    <span class="w-4 h-[2px] bg-indigo-600 mr-1.5"></span> Interests
+                    <span class="section-line w-4 mr-1.5 rounded-full"></span> Interests
                 </h2>
-                <div class="bg-slate-50 p-2 rounded-lg border border-slate-100 text-[9px] text-slate-700 space-y-1">
-                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-book-open text-indigo-600 w-3 text-center text-[8px]"></i><span>Contemporary Literature</span></div>
-                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-pen-nib text-indigo-600 w-3 text-center text-[8px]"></i><span>Creative Writing</span></div>
-                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-globe text-indigo-600 w-3 text-center text-[8px]"></i><span>Digital Humanities</span></div>
+                <div class="accent-card p-2 rounded-lg pl-4 text-[9px] text-slate-700 space-y-1">
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-book-open text-indigo-600 w-3 text-center text-[8px]"></i><span>Contemporary Literature</span></div>
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-pen-nib text-indigo-600 w-3 text-center text-[8px]"></i><span>Creative Writing</span></div>
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-globe text-indigo-600 w-3 text-center text-[8px]"></i><span>Digital Humanities</span></div>
                 </div>
             </section>
         </div>
 
-        <!-- Footer -->
-        <footer class="mt-4 pt-2 border-t border-slate-200 flex items-center justify-between text-[8px] text-slate-400 uppercase tracking-wider">
+        <!-- Footer with gradient line -->
+        <footer class="mt-4 pt-2 flex items-center justify-between text-[8px] text-slate-400 uppercase tracking-wider">
             <span>Rupia Hossain Chowdhury · Master's Admission Dossier</span>
             <span>Page 1 of 1</span>
         </footer>
+        <div class="footer-line mt-2"></div>
 
     </main>
     
