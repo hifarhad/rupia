@@ -4,145 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rupia Hossain Chowdhury — Academic CV</title>
+    
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script> tailwind.config = { darkMode: 'class' } </script>
 
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f1f5f9;
-            background-image:
-                radial-gradient(at 0% 0%, rgba(99,102,241,0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(59,130,246,0.08) 0px, transparent 50%);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
             background-attachment: fixed;
             transition: background-color 0.3s ease;
         }
+        
         .dark body {
             background-color: #0f172a;
-            background-image:
-                radial-gradient(at 0% 0%, rgba(99,102,241,0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(59,130,246,0.15) 0px, transparent 50%);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
         }
+
         .font-serif { font-family: 'Merriweather', serif; }
 
-        /* Digital Paper — always white on screen */
+        /* DIGITAL PAPER: Always pristine white on screen */
         .print-sheet {
             width: 210mm;
-            min-height: 297mm;
             margin: 0 auto;
             background: #ffffff !important;
             color: #1e293b !important;
-            box-shadow: 0 25px 60px -12px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.04);
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.04);
             border-radius: 6px;
         }
 
-        /* Screen hover */
         .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -6px rgba(0,0,0,0.12); }
+        .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.1); }
 
-        /* =============================================
-           PRINT: Aggressive 1-page compression
-           Screen styles are UNTOUCHED above.
-           ============================================= */
+        /* ============================================
+           PRINT: SCALE THE ENTIRE SCREEN VERSION
+           No style changes — just proportional scaling
+           to fit exactly on one A4 page.
+           ============================================ */
         @media print {
-            @page { size: A4; margin: 8mm 10mm; }
-
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
             html, body {
                 background: white !important;
                 background-image: none !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
-                margin: 0 !important; padding: 0 !important;
-            }
-            .no-print { display: none !important; }
-
-            .print-sheet {
-                width: 100% !important;
-                min-height: auto !important;
-                max-height: 281mm !important;
                 margin: 0 !important;
                 padding: 0 !important;
+            }
+
+            .no-print { display: none !important; }
+            
+            /* The magic: scale the whole sheet proportionally */
+            .print-sheet {
+                width: 210mm !important;
+                margin: 0 !important;
+                padding: 10mm !important;
                 box-shadow: none !important;
-                border: none !important;
                 border-radius: 0 !important;
-                overflow: hidden !important;
+                transform: scale(0.76);
+                transform-origin: top center;
+                /* After scaling, visual height = original height × 0.76 */
+                /* We need to compensate for the layout space transform doesn't shrink */
+                margin-bottom: calc(-24% * 1px) !important;
             }
 
-            /* Kill all screen-only decorations */
-            .hover-lift { transform: none !important; box-shadow: none !important; }
-            .hover-lift:hover { transform: none !important; }
-
-            /* Typography lockdown */
-            h1 { font-size: 16pt !important; line-height: 1.05 !important; margin-bottom: 1pt !important; }
-            h2 { font-size: 8.5pt !important; margin-bottom: 2pt !important; margin-top: 0 !important; letter-spacing: 0.06em !important; }
-            h3 { font-size: 8.5pt !important; line-height: 1.15 !important; }
-            p, li, span, a { font-size: 8pt !important; line-height: 1.22 !important; }
-
-            a { text-decoration: none !important; color: #000 !important; }
-
-            /* Flatten all spacing */
-            .print-sheet > header { padding-bottom: 4pt !important; margin-bottom: 4pt !important; }
-            .print-sheet section { margin-top: 4pt !important; margin-bottom: 0 !important; }
-            .print-sheet .grid { gap: 3pt !important; }
-            .print-sheet .space-y-1\.5 > * + * { margin-top: 2pt !important; }
-            .print-sheet .space-y-2\.5 > * + * { margin-top: 2pt !important; }
-            .print-sheet .space-y-3 > * + * { margin-top: 2pt !important; }
-            .print-sheet .gap-3 { gap: 6pt !important; }
-            .print-sheet .gap-4 { gap: 6pt !important; }
-
-            /* Flatten cards */
-            .print-sheet .bg-slate-50,
-            .print-sheet .bg-indigo-50,
-            .print-sheet .bg-slate-100 {
-                background-color: transparent !important;
-                border-color: #e2e8f0 !important;
-                box-shadow: none !important;
+            /* Prevent any page breaks — everything stays on one page */
+            * {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
             }
-            .print-sheet [class*="rounded"] { border-radius: 2pt !important; }
-            .print-sheet [class*="compact-card"],
-            .print-sheet .bg-slate-50 { padding: 3pt 5pt !important; }
 
-            /* Header photo shrink */
-            .print-sheet .w-24 { width: 48px !important; height: 48px !important; }
-
-            /* Section dividers */
-            .print-sheet .border-b-2 { border-width: 1pt !important; }
-            .print-sheet .border-b { border-width: 0.5pt !important; }
-            .print-sheet .border-t { border-width: 0.5pt !important; }
-
-            /* Badge / pill compact */
-            .print-sheet [class*="rounded-full"],
-            .print-sheet [class*="rounded-md"] { padding: 0 3pt !important; font-size: 7pt !important; }
-
-            /* Footer */
-            .print-sheet footer { margin-top: 4pt !important; padding-top: 2pt !important; }
-            .print-sheet footer span { font-size: 7pt !important; }
-
-            /* Hide decorative elements */
-            .print-sheet .w-5, .print-sheet .w-4 { width: 10pt !important; }
+            /* Preserve all background colors exactly as on screen */
+            .bg-slate-50 { background-color: #f8fafc !important; }
+            .bg-indigo-50 { background-color: #eef2ff !important; }
+            .bg-slate-100 { background-color: #f1f5f9 !important; }
+            .bg-indigo-100 { background-color: #e0e7ff !important; }
         }
     </style>
 </head>
-<body class="py-8 px-4 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="py-6 px-4 antialiased selection:bg-indigo-600 selection:text-white">
 
-    <!-- Toolbar -->
-    <div class="no-print max-w-[210mm] mx-auto mb-6 flex flex-col sm:flex-row items-center justify-between bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-5 py-3 rounded-2xl shadow-lg transition-colors duration-300">
+    <!-- Top Toolbar (Screen Only) -->
+    <div class="no-print max-w-[210mm] mx-auto mb-5 flex flex-col sm:flex-row items-center justify-between bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-5 py-3 rounded-2xl shadow-lg transition-colors duration-300">
         <div class="flex items-center space-x-3 text-sm font-semibold mb-3 sm:mb-0">
             <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-700 flex items-center justify-center font-bold text-xs text-white shadow-md">RC</div>
             <div>
                 <div class="text-slate-900 dark:text-white">Academic Master's CV</div>
-                <div class="text-xs font-normal text-slate-500 dark:text-slate-400">1-Page A4 Print · Modern Web View</div>
+                <div class="text-xs font-normal text-slate-500 dark:text-slate-400">Screen = Print (Scaled to A4)</div>
             </div>
         </div>
         <div class="flex items-center gap-2">
             <div class="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
-                <button onclick="setTheme('light')" id="btn-light" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Light"><i class="fa-solid fa-sun text-xs"></i></button>
-                <button onclick="setTheme('system')" id="btn-system" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="System"><i class="fa-solid fa-display text-xs"></i></button>
-                <button onclick="setTheme('dark')" id="btn-dark" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Dark"><i class="fa-solid fa-moon text-xs"></i></button>
+                <button onclick="setTheme('light')" id="btn-light" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Light Mode">
+                    <i class="fa-solid fa-sun text-xs"></i>
+                </button>
+                <button onclick="setTheme('system')" id="btn-system" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="System Mode">
+                    <i class="fa-solid fa-display text-xs"></i>
+                </button>
+                <button onclick="setTheme('dark')" id="btn-dark" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Dark Mode">
+                    <i class="fa-solid fa-moon text-xs"></i>
+                </button>
             </div>
             <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-slate-900 dark:bg-indigo-600 hover:bg-slate-800 dark:hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95">
                 <i class="fa-solid fa-print mr-2"></i> Save PDF
@@ -150,25 +127,28 @@
         </div>
     </div>
 
-    <!-- ==================== CV SHEET ==================== -->
+    <!-- ==================== MAIN CV SHEET ==================== -->
     <main class="print-sheet p-8 sm:p-10 relative">
-
+        
         <!-- HEADER -->
-        <header class="flex items-start justify-between pb-5 border-b-2 border-slate-900 gap-4">
+        <header class="flex flex-col sm:flex-row sm:items-start justify-between pb-5 border-b-2 border-slate-900 gap-4">
             <div class="flex-1 space-y-2.5">
                 <div class="flex items-center gap-2 flex-wrap">
                     <span class="px-2.5 py-0.5 bg-indigo-50 text-indigo-800 text-[10px] font-bold tracking-widest uppercase rounded-md border border-indigo-100">Master's Applicant</span>
                     <span class="text-slate-400 text-xs">•</span>
                     <span class="text-slate-600 text-xs font-semibold tracking-wide uppercase">English Language & Literature</span>
                 </div>
-                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">Rupia Hossain Chowdhury</h1>
+                <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                    Rupia Hossain Chowdhury
+                </h1>
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-600 font-medium">
-                    <span class="flex items-center"><i class="fa-solid fa-location-dot text-indigo-600 mr-1.5 w-4 text-center"></i>Chittagong, Bangladesh</span>
-                    <span class="flex items-center"><i class="fa-solid fa-phone text-indigo-600 mr-1.5 w-4 text-center"></i><a href="tel:+8801620680512" class="hover:text-indigo-700 transition-colors">+880 1620-680512</a></span>
-                    <span class="flex items-center"><i class="fa-solid fa-envelope text-indigo-600 mr-1.5 w-4 text-center"></i><a href="mailto:rupiahossainchowdhury99@gmail.com" class="hover:text-indigo-700 transition-colors">rupiahossainchowdhury99@gmail.com</a></span>
+                    <span class="flex items-center"><i class="fa-solid fa-location-dot text-indigo-600 mr-1.5 w-4 text-center"></i> Chittagong, Bangladesh</span>
+                    <span class="flex items-center"><i class="fa-solid fa-phone text-indigo-600 mr-1.5 w-4 text-center"></i> <a href="tel:+8801620680512" class="hover:text-indigo-700 transition-colors">+880 1620-680512</a></span>
+                    <span class="flex items-center"><i class="fa-solid fa-envelope text-indigo-600 mr-1.5 w-4 text-center"></i> <a href="mailto:rupiahossainchowdhury99@gmail.com" class="hover:text-indigo-700 transition-colors break-all">rupiahossainchowdhury99@gmail.com</a></span>
                 </div>
             </div>
-            <div class="shrink-0">
+
+            <div class="shrink-0 self-start sm:self-center">
                 <div class="w-24 h-24 rounded-xl bg-slate-100 border-2 border-slate-200 overflow-hidden shadow-sm flex items-center justify-center relative">
                     <span class="absolute text-2xl font-bold text-slate-300 select-none">RC</span>
                     <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
@@ -177,34 +157,35 @@
         </header>
 
         <!-- ACADEMIC PROFILE -->
-        <section class="mt-6">
-            <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Academic Profile
+        <section class="mt-5">
+            <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Academic Profile
             </h2>
             <p class="text-sm text-slate-700 leading-relaxed font-serif text-justify">
-                Dedicated English Language and Literature graduate (CGPA 3.39/4.00) from International Islamic University Chittagong. Passionate about contemporary literature, critical theory, and cross-cultural discourse. Seeking a distinguished European Master's program to refine research methodologies, engage in international academic exchange, and prepare for a career in advanced research and higher education.
+                Dedicated English Language and Literature graduate (CGPA 3.39/4.00) from International Islamic University Chittagong. Passionate about contemporary literature, critical theory, and cross-cultural discourse. Seeking admission to a distinguished European Master's program to refine research methodologies, engage in international academic exchange, and prepare for a career in advanced research and higher education.
             </p>
         </section>
 
         <!-- EDUCATION -->
-        <section class="mt-6">
+        <section class="mt-5">
             <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
-                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Education
+                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Education
             </h2>
             <div class="space-y-3">
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover-lift">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 hover-lift">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
-                        <h3 class="font-bold text-slate-900 text-sm">BA in English Language & Literature</h3>
+                        <h3 class="font-bold text-slate-900 text-sm">BA in English Language and Literature</h3>
                         <span class="text-[10px] font-bold px-2.5 py-0.5 bg-indigo-100 text-indigo-800 rounded-full w-fit mt-1 sm:mt-0">2021 – 2025</span>
                     </div>
                     <p class="text-slate-700 text-xs font-semibold mb-0.5">International Islamic University Chittagong (IIUC)</p>
                     <div class="flex items-center gap-3 text-[11px] text-slate-600">
                         <span><strong class="text-slate-900">CGPA:</strong> 3.39 / 4.00</span>
                         <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-                        <span>Critical Theory · Research Methodology · Linguistics</span>
+                        <span>Critical Theory, Research Methodology, Linguistics</span>
                     </div>
                 </div>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 hover-lift">
+
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 hover-lift">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1">
                         <h3 class="font-bold text-slate-900 text-sm">Higher Secondary Certificate (HSC) — Science</h3>
                         <span class="text-[10px] font-bold px-2.5 py-0.5 bg-slate-200 text-slate-700 rounded-full w-fit mt-1 sm:mt-0">2020</span>
@@ -218,66 +199,72 @@
         </section>
 
         <!-- CONFERENCES & WORKSHOPS -->
-        <section class="mt-6">
+        <section class="mt-5">
             <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-3 flex items-center">
-                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Conferences & Workshops
+                <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Conferences & Workshops
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 hover-lift">
                     <div class="flex justify-between items-start mb-1">
                         <h3 class="font-bold text-slate-900 text-xs">AIUB Academic Conference</h3>
                         <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2025</span>
                     </div>
                     <p class="text-slate-600 text-[11px] leading-snug">Explored modern research methodologies and literary analysis frameworks.</p>
                 </div>
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 hover-lift">
                     <div class="flex justify-between items-start mb-1">
                         <h3 class="font-bold text-slate-900 text-xs">FAHIIUC International Conference</h3>
                         <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2023</span>
                     </div>
-                    <p class="text-slate-600 text-[11px] leading-snug">"Envisioning the Future of Teaching Language and Literature" in a global context.</p>
+                    <p class="text-slate-600 text-[11px] leading-snug">Attended expert sessions on "Envisioning the Future of Teaching Language and Literature."</p>
                 </div>
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 hover-lift">
                     <div class="flex justify-between items-start mb-1">
                         <h3 class="font-bold text-slate-900 text-xs">Academic SOP Writing Workshop</h3>
                         <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2024</span>
                     </div>
                     <p class="text-slate-600 text-[11px] leading-snug">Practical training in structuring compelling, research-focused Statements of Purpose.</p>
                 </div>
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 hover-lift">
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 hover-lift">
                     <div class="flex justify-between items-start mb-1">
                         <h3 class="font-bold text-slate-900 text-xs">Public Speaking & Rhetoric</h3>
                         <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">2024</span>
                     </div>
-                    <p class="text-slate-600 text-[11px] leading-snug">Advanced oral presentation, academic rhetoric, and delivery techniques.</p>
+                    <p class="text-slate-600 text-[11px] leading-snug">Developed advanced confidence in oral presentation and academic delivery techniques.</p>
                 </div>
             </div>
         </section>
 
-        <!-- TWO-COLUMN: Leadership + Languages/Skills -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-6">
+        <!-- TWO COLUMN: Leadership + Languages/Skills -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mt-5">
+            
+            <!-- Leadership (7 cols) -->
             <section class="md:col-span-7">
-                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Leadership & Volunteering
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Leadership & Volunteering
                 </h2>
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 hover-lift">
+                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-1.5">
-                        <h3 class="font-bold text-slate-900 text-sm">Event Volunteer & Coordinator</h3>
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm">Event Volunteer & Coordinator</h3>
                         <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full w-fit mt-1 sm:mt-0">IIUC Campus</span>
                     </div>
-                    <ul class="list-disc list-inside space-y-1 text-slate-700 text-xs leading-relaxed marker:text-indigo-600">
+                    <ul class="list-disc list-inside space-y-1 text-slate-700 text-[11px] leading-relaxed marker:text-indigo-600">
                         <li>Organized academic/cultural events: <em>Melody & Metaphor</em> Competition, Debate, and Public Speaking Contests.</li>
                         <li>Managed participant coordination, scheduling, and on-site logistics for 200+ attendees.</li>
                     </ul>
                 </div>
             </section>
 
+            <!-- Right Column (5 cols) -->
             <div class="md:col-span-5 space-y-4">
                 <section>
-                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                        <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Languages
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                        <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Languages
                     </h2>
-                    <div class="space-y-1.5 text-xs">
+                    <div class="space-y-1.5 text-[11px]">
                         <div class="flex justify-between items-center bg-slate-50 px-3 py-2.5 rounded-lg border border-slate-200/80">
                             <span class="font-bold text-slate-900">Bangla</span>
                             <span class="text-slate-600 font-medium">Native</span>
@@ -288,17 +275,18 @@
                         </div>
                     </div>
                 </section>
+
                 <section>
-                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                        <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Digital Literacy
+                    <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                        <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Digital Literacy
                     </h2>
-                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-2 text-xs">
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 space-y-2 text-[11px]">
                         <div class="flex justify-between items-center font-medium">
-                            <span class="text-slate-900"><i class="fa-solid fa-file-word text-indigo-600 mr-1.5 w-4 text-center"></i>MS Office Suite</span>
+                            <span class="text-slate-900"><i class="fa-solid fa-file-word text-indigo-600 mr-1.5 w-3 text-center"></i>MS Office Suite</span>
                             <span class="text-slate-600">Proficient</span>
                         </div>
-                        <div class="flex justify-between items-center font-medium pt-2 border-t border-slate-200">
-                            <span class="text-slate-900"><i class="fa-solid fa-magnifying-glass text-indigo-600 mr-1.5 w-4 text-center"></i>Digital Humanities & SEO</span>
+                        <div class="flex justify-between items-center font-medium pt-1.5 border-t border-slate-200">
+                            <span class="text-slate-900"><i class="fa-solid fa-magnifying-glass text-indigo-600 mr-1.5 w-3 text-center"></i>Digital Humanities & SEO</span>
                             <span class="text-indigo-700 font-semibold">Active Learner</span>
                         </div>
                     </div>
@@ -307,27 +295,28 @@
         </div>
 
         <!-- BOTTOM ROW: Competencies + Interests -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
             <section>
-                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Core Competencies
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Core Competencies
                 </h2>
                 <div class="flex flex-wrap gap-1.5">
-                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Academic Research</span>
-                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Critical Analysis</span>
-                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Cross-cultural Communication</span>
-                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Event Coordination</span>
-                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">Detail Accuracy</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200">Academic Research</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200">Critical Analysis</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200">Cross-cultural Communication</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200">Event Coordination</span>
+                    <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[10px] font-semibold rounded-md border border-slate-200">Detail Accuracy</span>
                 </div>
             </section>
+
             <section>
-                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2.5 flex items-center">
-                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span>Interests
+                <h2 class="text-[11px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                    <span class="w-5 h-[2px] bg-indigo-600 mr-2"></span> Interests
                 </h2>
-                <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 text-xs text-slate-700 space-y-1.5">
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-book-open text-indigo-600 w-4 text-center"></i><span>Contemporary Literature & Critical Theory</span></div>
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-pen-nib text-indigo-600 w-4 text-center"></i><span>Creative Writing & Academic Composition</span></div>
-                    <div class="flex items-center space-x-2"><i class="fa-solid fa-globe text-indigo-600 w-4 text-center"></i><span>Digital Humanities & Continuous Learning</span></div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-[11px] text-slate-700 space-y-1.5">
+                    <div class="flex items-center space-x-2.5"><i class="fa-solid fa-book-open text-indigo-600 w-4 text-center"></i><span>Contemporary Literature & Critical Theory</span></div>
+                    <div class="flex items-center space-x-2.5"><i class="fa-solid fa-pen-nib text-indigo-600 w-4 text-center"></i><span>Creative Writing & Academic Composition</span></div>
+                    <div class="flex items-center space-x-2.5"><i class="fa-solid fa-globe text-indigo-600 w-4 text-center"></i><span>Digital Humanities & Continuous Learning</span></div>
                 </div>
             </section>
         </div>
@@ -339,30 +328,48 @@
         </footer>
 
     </main>
-
+    
     <div class="no-print h-12"></div>
 
+    <!-- Theme Script -->
     <script>
         function setTheme(theme) {
             const html = document.documentElement;
             if (theme === 'system') {
                 localStorage.removeItem('theme');
-                window.matchMedia('(prefers-color-scheme: dark)').matches ? html.classList.add('dark') : html.classList.remove('dark');
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.classList.add('dark');
+                else html.classList.remove('dark');
             } else if (theme === 'dark') {
-                localStorage.setItem('theme', 'dark'); html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                html.classList.add('dark');
             } else {
-                localStorage.setItem('theme', 'light'); html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                html.classList.remove('dark');
             }
-            ['light','system','dark'].forEach(btn => {
+            updateActiveButton(theme);
+        }
+
+        function updateActiveButton(theme) {
+            ['light', 'system', 'dark'].forEach(btn => {
                 const el = document.getElementById(`btn-${btn}`);
-                if (btn === theme) { el.classList.add('bg-white','dark:bg-slate-800','text-indigo-600','dark:text-indigo-400','shadow-sm'); el.classList.remove('text-slate-500'); }
-                else { el.classList.remove('bg-white','dark:bg-slate-800','text-indigo-600','dark:text-indigo-400','shadow-sm'); el.classList.add('text-slate-500'); }
+                if (btn === theme) {
+                    el.classList.add('bg-white', 'dark:bg-slate-800', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-sm');
+                    el.classList.remove('text-slate-500');
+                } else {
+                    el.classList.remove('bg-white', 'dark:bg-slate-800', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-sm');
+                    el.classList.add('text-slate-500');
+                }
             });
         }
+
         document.addEventListener('DOMContentLoaded', () => {
-            setTheme(localStorage.getItem('theme') || 'system');
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) e.matches ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) document.documentElement.classList.add('dark');
+                    else document.documentElement.classList.remove('dark');
+                }
             });
         });
     </script>
