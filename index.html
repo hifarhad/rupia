@@ -74,15 +74,10 @@
                 </div>
             </div>
 
-            <!-- Profile Photo Box -->
-            <div class="shrink-0 group relative">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-lg bg-slate-100 border-2 border-slate-300 overflow-hidden shadow-inner flex items-center justify-center relative cursor-pointer hover:border-indigo-600 transition">
-                    <img id="profile-preview" src="" alt="Photo" class="w-full h-full object-cover hidden">
-                    <div id="upload-placeholder" class="flex flex-col items-center justify-center p-2 text-center">
-                        <i class="fa-solid fa-camera text-indigo-500 text-lg mb-1"></i>
-                        <span class="text-[9px] font-semibold text-slate-500 leading-tight">Add Photo</span>
-                    </div>
-                    <input type="file" id="photo-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" title="Upload photo" aria-label="Upload photo">
+            <!-- Profile Photo (Linked directly to photo.jpeg) -->
+            <div class="shrink-0">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-lg bg-slate-100 border-2 border-slate-300 overflow-hidden shadow-inner flex items-center justify-center">
+                    <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover">
                 </div>
             </div>
         </header>
@@ -246,25 +241,5 @@
             Rupia Hossain Chowdhury · Master's Application CV
         </footer>
     </main>
-
-    <!-- Photo Uploader Script -->
-    <script>
-        const photoInput = document.getElementById('photo-input');
-        const profilePreview = document.getElementById('profile-preview');
-        const uploadPlaceholder = document.getElementById('upload-placeholder');
-
-        photoInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profilePreview.src = e.target.result;
-                    profilePreview.classList.remove('hidden');
-                    uploadPlaceholder.classList.add('hidden');
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
 </body>
 </html>
