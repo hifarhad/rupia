@@ -1,14 +1,705 @@
-@media print {
-    .name-heading {
-        background: none !important;
-        -webkit-text-fill-color: #0f172a !important;
-        color: #0f172a !important;
-        text-shadow: none !important;
-    }
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rupia Hossain Chowdhury — Academic CV</title>
     
-    .icon-accent {
-        background: none !important;
-        -webkit-text-fill-color: #4f46e5 !important;
-        color: #4f46e5 !important;
-    }
-}
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script> tailwind.config = { darkMode: 'class' } </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark body {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+        }
+
+        .font-serif { font-family: 'Merriweather', serif; }
+        .font-display { font-family: 'Cormorant Garamond', serif; }
+
+        /* A4 Paper - Screen View with subtle paper texture */
+        .cv-sheet {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: 
+                radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(236, 72, 153, 0.02) 0%, transparent 40%),
+                linear-gradient(180deg, #ffffff 0%, #fafbff 100%) !important;
+            color: #1e293b !important;
+            box-shadow: 
+                0 1px 2px rgba(15, 23, 42, 0.04),
+                0 8px 24px rgba(15, 23, 42, 0.06),
+                0 25px 60px -15px rgba(15, 23, 42, 0.12);
+            border-radius: 6px;
+            padding: 15mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* === REFINED DESIGN ENHANCEMENTS === */
+        
+        /* Elegant signature stripe at top - thinner, more sophisticated */
+        .cv-sheet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                #1e293b 0%, 
+                #4f46e5 25%, 
+                #7c3aed 50%, 
+                #ec4899 75%, 
+                #1e293b 100%);
+        }
+
+        /* Subtle watermark pattern in background */
+        .cv-sheet::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.015) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.015) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cv-sheet > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Refined header divider - more elegant */
+        .header-divider {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #1e293b 15%, 
+                #4f46e5 50%, 
+                #1e293b 85%, 
+                transparent 100%);
+            height: 1px;
+            position: relative;
+        }
+        .header-divider::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: #4f46e5;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Refined section header lines */
+        .section-line {
+            background: linear-gradient(90deg, #1e293b 0%, #4f46e5 60%, #a5b4fc 100%);
+            height: 1.5px;
+            border-radius: 1px;
+        }
+
+        /* Refined gradient badge - more sophisticated */
+        .gradient-badge {
+            background: linear-gradient(135deg, 
+                rgba(238, 242, 255, 0.8) 0%, 
+                rgba(224, 231, 255, 0.9) 50%, 
+                rgba(237, 233, 254, 0.8) 100%);
+            border: 1px solid rgba(165, 180, 252, 0.6);
+            color: #3730a3;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            letter-spacing: 0.08em;
+        }
+        .gradient-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Refined photo frame - more elegant */
+        .photo-frame {
+            position: relative;
+            padding: 3px;
+            background: linear-gradient(135deg, 
+                #1e293b 0%, 
+                #4f46e5 30%, 
+                #7c3aed 60%, 
+                #ec4899 100%);
+            border-radius: 14px;
+            box-shadow: 
+                0 4px 12px rgba(79, 70, 229, 0.2),
+                0 8px 24px rgba(124, 58, 237, 0.15);
+        }
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, 
+                rgba(79, 70, 229, 0.3), 
+                rgba(236, 72, 153, 0.3));
+            filter: blur(8px);
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .photo-frame-inner {
+            background: white;
+            border-radius: 11px;
+            padding: 2px;
+        }
+
+        /* Refined universal card style */
+        .accent-card {
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.9) 0%, 
+                rgba(241, 245, 249, 0.95) 100%);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            backdrop-filter: blur(4px);
+            box-shadow: 
+                0 1px 2px rgba(15, 23, 42, 0.03),
+                0 2px 4px rgba(15, 23, 42, 0.02);
+            transition: all 0.3s ease;
+        }
+        .accent-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2.5px;
+            background: linear-gradient(180deg, 
+                #4f46e5 0%, 
+                #7c3aed 50%, 
+                #ec4899 100%);
+            border-radius: 0 2px 2px 0;
+            box-shadow: 0 0 4px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Refined date badges */
+        .date-badge {
+            background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+            color: #312e81;
+            border: 1px solid rgba(165, 180, 252, 0.5);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 1px 2px rgba(79, 70, 229, 0.08);
+        }
+        .date-badge-small {
+            background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            color: #4338ca;
+            border: 1px solid rgba(199, 210, 254, 0.6);
+            font-weight: 700;
+        }
+
+        /* Refined skill tags */
+        .skill-tag {
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.9) 0%, 
+                rgba(241, 245, 249, 0.9) 100%);
+            border: 1px solid rgba(203, 213, 225, 0.8);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .skill-tag > * {
+            position: relative;
+            z-index: 1;
+        }
+        .skill-tag:hover::before {
+            opacity: 1;
+        }
+        .skill-tag:hover {
+            border-color: #a5b4fc;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.12);
+        }
+
+        /* Refined language items */
+        .lang-item {
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.9) 0%, 
+                rgba(241, 245, 249, 0.9) 100%);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.25s ease;
+        }
+        .lang-item:hover {
+            border-color: #a5b4fc;
+            background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            transform: translateX(2px);
+        }
+
+        /* Refined interest items */
+        .interest-item {
+            position: relative;
+            padding-left: 12px;
+            transition: transform 0.2s ease;
+        }
+        .interest-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5, #ec4899);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+        .interest-item:hover {
+            transform: translateX(2px);
+        }
+
+        /* Refined footer */
+        .footer-line {
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #cbd5e1 15%, 
+                #4f46e5 50%, 
+                #cbd5e1 85%, 
+                transparent 100%);
+            height: 1px;
+            position: relative;
+        }
+        .footer-line::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 4px;
+            background: #4f46e5;
+            border-radius: 50%;
+        }
+
+        /* Name styling - elegant gradient on screen, solid color for print */
+        .name-heading {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #0f172a;
+            text-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+            letter-spacing: -0.02em;
+        }
+
+        /* Icon styling - subtle gradient */
+        .icon-accent {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #4f46e5;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            html, body {
+                background: white !important;
+                background-image: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .no-print { display: none !important; }
+            
+            .cv-sheet {
+                width: 100% !important;
+                min-height: auto !important;
+                margin: 0 !important;
+                padding: 12mm !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                background: white !important;
+            }
+
+            .cv-sheet::before,
+            .cv-sheet::after,
+            .gradient-badge::after,
+            .photo-frame::before { 
+                display: none !important; 
+            }
+            
+            .skill-tag:hover,
+            .lang-item:hover,
+            .interest-item:hover { 
+                transform: none !important; 
+            }
+
+            /* FIX: Force solid color for name heading in print */
+            .name-heading {
+                background: none !important;
+                -webkit-text-fill-color: #0f172a !important;
+                color: #0f172a !important;
+                text-shadow: none !important;
+            }
+
+            /* FIX: Force solid color for icons in print */
+            .icon-accent {
+                background: none !important;
+                -webkit-text-fill-color: #4f46e5 !important;
+                color: #4f46e5 !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+        .hover-lift:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 
+                0 4px 8px rgba(15, 23, 42, 0.04),
+                0 8px 20px rgba(79, 70, 229, 0.12); 
+        }
+    </style>
+</head>
+<body class="py-6 px-4 antialiased selection:bg-indigo-600 selection:text-white">
+
+    <!-- Top Toolbar (Screen Only) -->
+    <div class="no-print max-w-[210mm] mx-auto mb-5 flex flex-col sm:flex-row items-center justify-between bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 px-5 py-3 rounded-2xl shadow-lg transition-colors duration-300">
+        <div class="flex items-center space-x-3 text-sm font-semibold mb-3 sm:mb-0">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-blue-700 flex items-center justify-center font-bold text-xs text-white shadow-md">RC</div>
+            <div>
+                <div class="text-slate-900 dark:text-white">Academic Master's CV</div>
+                <div class="text-xs font-normal text-slate-500 dark:text-slate-400">Single Page A4 Design</div>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="flex bg-slate-100 dark:bg-slate-900 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+                <button onclick="setTheme('light')" id="btn-light" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Light Mode">
+                    <i class="fa-solid fa-sun text-xs"></i>
+                </button>
+                <button onclick="setTheme('system')" id="btn-system" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="System Mode">
+                    <i class="fa-solid fa-display text-xs"></i>
+                </button>
+                <button onclick="setTheme('dark')" id="btn-dark" class="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 transition-all" title="Dark Mode">
+                    <i class="fa-solid fa-moon text-xs"></i>
+                </button>
+            </div>
+            <button onclick="window.print()" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-slate-900 via-indigo-700 to-slate-900 hover:from-slate-800 hover:via-indigo-600 hover:to-slate-800 text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95">
+                <i class="fa-solid fa-print mr-2"></i> Save PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CV SHEET ==================== -->
+    <main class="cv-sheet">
+        
+        <!-- HEADER -->
+        <header class="flex items-start justify-between pb-4 mb-4">
+            <div class="flex-1">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="gradient-badge px-2.5 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded">Master's Applicant</span>
+                    <span class="text-slate-400 text-[10px]">•</span>
+                    <span class="text-slate-600 text-[10px] font-semibold tracking-wide uppercase">English Language & Literature</span>
+                </div>
+                <h1 class="name-heading text-[22px] font-extrabold tracking-tight leading-tight mb-1.5">
+                    Rupia Hossain Chowdhury
+                </h1>
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-slate-600 font-medium">
+                    <span class="flex items-center"><i class="fa-solid fa-location-dot icon-accent mr-1"></i> Chittagong, Bangladesh</span>
+                    <span class="flex items-center"><i class="fa-solid fa-phone icon-accent mr-1"></i> <a href="tel:+8801620680512" class="hover:text-indigo-700">+880 1620-680512</a></span>
+                    <span class="flex items-center"><i class="fa-solid fa-envelope icon-accent mr-1"></i> <a href="mailto:rupiahossainchowdhury99@gmail.com" class="hover:text-indigo-700">rupiahossainchowdhury99@gmail.com</a></span>
+                </div>
+            </div>
+
+            <!-- Photo with refined frame -->
+            <div class="shrink-0 ml-4">
+                <div class="photo-frame">
+                    <div class="photo-frame-inner">
+                        <div class="w-24 h-24 rounded-lg bg-slate-100 overflow-hidden shadow-sm flex items-center justify-center relative">
+                            <span class="absolute text-2xl font-bold text-slate-300 select-none">RC</span>
+                            <img src="photo.jpeg" alt="Rupia Hossain Chowdhury" class="w-full h-full object-cover relative z-10" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Refined header divider with center dot -->
+        <div class="header-divider mb-4"></div>
+
+        <!-- ACADEMIC PROFILE -->
+        <section class="mb-4">
+            <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
+                <span class="section-line w-4 mr-1.5"></span> Academic Profile
+            </h2>
+            <p class="text-[11.5px] text-slate-700 leading-[1.5] font-serif text-justify">
+                Dedicated English Language and Literature graduate (CGPA 3.39/4.00) from International Islamic University Chittagong. Passionate about contemporary literature, critical theory, and cross-cultural discourse. Seeking admission to a distinguished European Master's program to refine research methodologies and prepare for a career in advanced research and higher education. My academic journey has been driven by a deep curiosity about how literary texts shape cultural identities and social narratives across different historical periods. I am particularly interested in exploring postcolonial literature and its intersections with gender studies, as well as the role of digital humanities in transforming traditional literary analysis. Through rigorous academic training and active participation in scholarly conferences, I have developed strong analytical skills and a commitment to contributing meaningful research to the field of English studies.
+            </p>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <div class="space-y-4">
+            
+            <!-- Education -->
+            <section>
+                <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                    <span class="section-line w-4 mr-1.5"></span> Education
+                </h2>
+                <div class="space-y-2">
+                    <div class="accent-card p-2.5 rounded-lg hover-lift pl-4">
+                        <div class="flex items-center justify-between mb-0.5">
+                            <h3 class="font-bold text-slate-900 text-[11px]">BA in English Language and Literature</h3>
+                            <span class="date-badge text-[9px] px-1.5 py-0.5 rounded">2021 – 2025</span>
+                        </div>
+                        <p class="text-slate-700 text-[10px] font-semibold mb-0.5">International Islamic University Chittagong (IIUC)</p>
+                        <div class="flex items-center gap-2 text-[9.5px] text-slate-600">
+                            <span><strong class="text-slate-900">CGPA:</strong> 3.39 / 4.00</span>
+                            <span class="w-0.5 h-0.5 rounded-full bg-slate-300"></span>
+                            <span>Critical Theory, Research Methodology, Linguistics</span>
+                        </div>
+                    </div>
+
+                    <div class="accent-card p-2.5 rounded-lg hover-lift pl-4">
+                        <div class="flex items-center justify-between mb-0.5">
+                            <h3 class="font-bold text-slate-900 text-[11px]">HSC — Science</h3>
+                            <span class="date-badge text-[9px] px-1.5 py-0.5 rounded">2020</span>
+                        </div>
+                        <p class="text-slate-700 text-[10px] font-semibold mb-0.5">Chattagram Biggan College, Chittagong</p>
+                        <div class="text-[9.5px] text-slate-600">
+                            <span><strong class="text-slate-900">GPA:</strong> 4.83 / 5.00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TWO COLUMN: Conferences & Leadership -->
+            <div class="grid grid-cols-2 gap-4">
+                
+                <!-- Conferences & Workshops -->
+                <section>
+                    <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                        <span class="section-line w-4 mr-1.5"></span> Conferences & Workshops
+                    </h2>
+                    <div class="accent-card p-2.5 rounded-lg pl-4">
+                        <div class="space-y-1.5">
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] px-1 py-0.5 rounded shrink-0 mt-0.5">2025</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">AIUB Academic Conference</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Modern research methodologies & literary analysis frameworks.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">Academic SOP Writing Workshop</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Structuring research-focused Statements of Purpose.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] px-1 py-0.5 rounded shrink-0 mt-0.5">2024</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">Public Speaking & Rhetoric Workshop</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">Oral presentation & academic delivery techniques.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2 text-[10px]">
+                                <span class="date-badge-small text-[8px] px-1 py-0.5 rounded shrink-0 mt-0.5">2023</span>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-slate-900 leading-tight">FAHIIUC International Conference</h3>
+                                    <p class="text-slate-600 text-[9px] leading-tight">"Future of Teaching Language and Literature."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Leadership & Volunteering -->
+                <section>
+                    <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-2 flex items-center">
+                        <span class="section-line w-4 mr-1.5"></span> Leadership & Volunteering
+                    </h2>
+                    <div class="accent-card p-2.5 rounded-lg pl-4 h-full">
+                        <div class="flex items-center justify-between mb-1">
+                            <h3 class="font-bold text-slate-900 text-[10.5px]">IIUC · Event Volunteer & Coordinator</h3>
+                            <span class="date-badge-small text-[8px] px-1.5 py-0.5 rounded">Campus</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-0.5 text-slate-700 text-[9.5px] leading-snug marker:text-indigo-600">
+                            <li>Organized <em>Melody & Metaphor</em> Competition, Debate, and Public Speaking Contests.</li>
+                            <li>Managed coordination, scheduling, and logistics for 200+ attendees.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- BOTTOM ROW 1: Digital Literacy + Core Skills -->
+        <div class="grid grid-cols-2 gap-4 mt-4 pt-4" style="border-top: 1px solid transparent; border-image: linear-gradient(90deg, transparent, #cbd5e1 20%, #4f46e5 50%, #cbd5e1 80%, transparent) 1;">
+            
+            <!-- Digital Literacy -->
+            <section>
+                <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
+                    <span class="section-line w-4 mr-1.5"></span> Digital Literacy
+                </h2>
+                <div class="accent-card p-2 rounded-lg pl-4 space-y-1 text-[9.5px]">
+                    <div class="flex justify-between items-center">
+                        <span class="text-slate-900"><i class="fa-solid fa-file-word icon-accent mr-1 text-[8px]"></i>MS Office</span>
+                        <span class="text-slate-600">Proficient</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+                        <span class="text-slate-900"><i class="fa-solid fa-magnifying-glass icon-accent mr-1 text-[8px]"></i>Digital Humanities</span>
+                        <span class="text-indigo-700 font-semibold">Learning</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Skills -->
+            <section>
+                <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
+                    <span class="section-line w-4 mr-1.5"></span> Core Skills
+                </h2>
+                <div class="accent-card p-2 rounded-lg pl-4">
+                    <div class="flex flex-wrap gap-1">
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Academic Research</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Critical Analysis</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Cross-cultural Comm.</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Event Coordination</span>
+                        <span class="skill-tag px-2 py-0.5 text-slate-700 text-[8.5px] font-semibold rounded">Detail Accuracy</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- BOTTOM ROW 2: Languages + Interests -->
+        <div class="grid grid-cols-2 gap-4 mt-3">
+            
+            <!-- Languages -->
+            <section>
+                <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
+                    <span class="section-line w-4 mr-1.5"></span> Languages
+                </h2>
+                <div class="accent-card p-2 rounded-lg pl-4 space-y-1 text-[9.5px]">
+                    <div class="flex justify-between items-center lang-item px-2 py-1.5 rounded">
+                        <span class="font-bold text-slate-900">Bangla</span>
+                        <span class="text-slate-600">Native</span>
+                    </div>
+                    <div class="flex justify-between items-center lang-item px-2 py-1.5 rounded">
+                        <span class="font-bold text-slate-900">English</span>
+                        <span class="text-indigo-700 font-semibold">Fluent</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interests -->
+            <section>
+                <h2 class="text-[9px] uppercase tracking-[0.15em] text-indigo-700 font-extrabold mb-1.5 flex items-center">
+                    <span class="section-line w-4 mr-1.5"></span> Interests
+                </h2>
+                <div class="accent-card p-2 rounded-lg pl-4 text-[9px] text-slate-700 space-y-1">
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-book-open icon-accent w-3 text-center text-[8px]"></i><span>Contemporary Literature</span></div>
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-pen-nib icon-accent w-3 text-center text-[8px]"></i><span>Creative Writing</span></div>
+                    <div class="interest-item flex items-center gap-1.5"><i class="fa-solid fa-globe icon-accent w-3 text-center text-[8px]"></i><span>Digital Humanities</span></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer with refined line -->
+        <footer class="mt-4 pt-2 flex items-center justify-between text-[8px] text-slate-400 uppercase tracking-wider">
+            <span>Rupia Hossain Chowdhury · Master's Admission Dossier</span>
+            <span>Page 1 of 1</span>
+        </footer>
+        <div class="footer-line mt-2"></div>
+
+    </main>
+    
+    <div class="no-print h-12"></div>
+
+    <!-- Theme Script -->
+    <script>
+        function setTheme(theme) {
+            const html = document.documentElement;
+            if (theme === 'system') {
+                localStorage.removeItem('theme');
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.classList.add('dark');
+                else html.classList.remove('dark');
+            } else if (theme === 'dark') {
+                localStorage.setItem('theme', 'dark');
+                html.classList.add('dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+                html.classList.remove('dark');
+            }
+            updateActiveButton(theme);
+        }
+
+        function updateActiveButton(theme) {
+            ['light', 'system', 'dark'].forEach(btn => {
+                const el = document.getElementById(`btn-${btn}`);
+                if (btn === theme) {
+                    el.classList.add('bg-white', 'dark:bg-slate-800', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-sm');
+                    el.classList.remove('text-slate-500');
+                } else {
+                    el.classList.remove('bg-white', 'dark:bg-slate-800', 'text-indigo-600', 'dark:text-indigo-400', 'shadow-sm');
+                    el.classList.add('text-slate-500');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'system';
+            setTheme(savedTheme);
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) document.documentElement.classList.add('dark');
+                    else document.documentElement.classList.remove('dark');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
